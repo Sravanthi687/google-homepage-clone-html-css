@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google</title>
+  <meta name="description" content="Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.">
+  <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons (CDN) for UI icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Orbs for Glassmorphism concept -->
+  <div class="glass-bg-glows">
+    <div class="glow-orb orb-purple"></div>
+    <div class="glow-orb orb-blue"></div>
+    <div class="glow-orb orb-cyan"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-link">Store</a>
+    </div>
+    
+    <div class="nav-right">
+      <a href="#" class="nav-link">Gmail</a>
+      <a href="#" class="nav-link">Images</a>
+      
+      <!-- Apps Launcher -->
+      <button class="icon-btn" id="appsBtn" aria-label="Google Apps" title="Google apps">
+        <svg class="apps-icon" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c-1.1,0 -2,0.9 -2,2s0.9,2 2,2 2,-0.9 2,-2 -0.9,-2 -2,-2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z" fill="currentColor"></path>
+        </svg>
+      </button>
+
+      <!-- Profile Button -->
+      <button class="profile-btn" id="profileBtn" aria-label="Google Account" title="Google Account">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100&h=100" alt="Profile" class="avatar-img">
+      </button>
+    </div>
+  </header>
+
+  <!-- Google Apps Drawer Popover -->
+  <div class="apps-drawer" id="appsDrawer">
+    <div class="drawer-grid">
+      <a href="#" class="app-item">
+        <div class="app-icon search-app"></div>
+        <span>Search</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon maps-app"></div>
+        <span>Maps</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon youtube-app"></div>
+        <span>YouTube</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon play-app"></div>
+        <span>Play</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon news-app"></div>
+        <span>News</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon gmail-app"></div>
+        <span>Gmail</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon meet-app"></div>
+        <span>Meet</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon drive-app"></div>
+        <span>Drive</span>
+      </a>
+      <a href="#" class="app-item">
+        <div class="app-icon calendar-app"></div>
+        <span>Calendar</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Profile Menu Popover -->
+  <div class="profile-menu" id="profileMenu">
+    <div class="profile-header">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" alt="Avatar Large" class="avatar-lg">
+      <div class="user-info">
+        <h3>Elena Rostova</h3>
+        <p>elena.rostova@gmail.com</p>
+      </div>
+    </div>
+    <div class="profile-actions">
+      <a href="#" class="menu-btn manage-btn">Manage your Google Account</a>
+      <hr>
+      <a href="#" class="menu-item"><i data-lucide="user-plus"></i> Add another account</a>
+      <a href="#" class="menu-item"><i data-lucide="log-out"></i> Sign out</a>
+    </div>
+  </div>
+
+  <!-- Main Search Section -->
+  <main class="search-container">
+    
+    <!-- Dynamic Google Logo (Scalable vector markup) -->
+    <div class="google-logo-wrapper">
+      <svg class="google-logo" viewBox="0 0 272 92" width="272" height="92" aria-label="Google">
+        <g id="logo-letters">
+          <!-- G -->
+          <path class="g-letter logo-blue" d="M45.1,38.1v9h21.6c-0.9,4.7-5.1,13.8-21.6,13.8c-14.3,0-26-11.9-26-26.5s11.7-26.5,26-26.5c8.1,0,13.6,3.4,16.7,6.3l7.1-7C63.7,3.5,55.3,1,45.1,1C23.1,1,5.2,18.8,5.2,40.9S23.1,80.8,45.1,80.8c23,0,38.3-16.1,38.3-39c0-2.6-0.3-4.7-0.7-6.7H45.1z"/>
+          <!-- o -->
+          <path class="o1-letter logo-red" d="M106.9,29.9c-14.3,0-26,11.8-26,26.5c0,14.7,11.7,26.5,26,26.5c14.3,0,26-11.8,26-26.5C132.9,41.7,121.2,29.9,106.9,29.9z M106.9,73.1c-8.6,0-15.8-7.1-15.8-16.7s7.2-16.7,15.8-16.7s15.8,7.1,15.8,16.7S115.5,73.1,106.9,73.1z"/>
+          <!-- o -->
+          <path class="o2-letter logo-yellow" d="M165.9,29.9c-14.3,0-26,11.8-26,26.5c0,14.7,11.7,26.5,26,26.5c14.3,0,26-11.8,26-26.5C191.9,41.7,180.2,29.9,165.9,29.9z M165.9,73.1c-8.6,0-15.8-7.1-15.8-16.7s7.2-16.7,15.8-16.7s15.8,7.1,15.8,16.7S174.5,73.1,165.9,73.1z"/>
+          <!-- g -->
+          <path class="g2-letter logo-blue" d="M222.1,29.9c-13.8,0-25.1,11.9-25.1,26.5c0,14.5,11.3,26.2,25.1,26.2c7.8,0,13.7-4.1,16.4-7.2h0.6v5.2c0,10.1-5.4,15.5-14.1,15.5c-7.1,0-11.6-5.1-13.4-9.5l-8.1,3.4c2.4,5.7,8.6,12.7,21.5,12.7c13.6,0,25-8,25-27.4v-43h-9.9v3.9H238.2C235.4,33.5,229.4,29.9,222.1,29.9z M223.2,73.1c-8.3,0-14.8-7.1-14.8-16.6s6.5-16.7,14.8-16.7c8.2,0,14.8,7.1,14.8,16.7S231.4,73.1,223.2,73.1z"/>
+          <!-- l -->
+          <path class="l-letter logo-green" d="M256.4,3.2H246.5V79.2H256.4V3.2z"/>
+          <!-- e -->
+          <path class="e-letter logo-red" d="M289.4,55.8c0-14.4-10-25.9-24.3-25.9c-14.8,0-26,11.8-26,26.5c0,14.7,11.2,26.5,26.4,26.5c12.3,0,19.4-7.5,22.4-12l-8.1-5.4c-2.7,4-6.3,7.6-14.3,7.6c-7.9,0-13.4-4.8-15.6-9.6h40.3C289.2,60.8,289.4,58.3,289.4,55.8z M265.1,38.8c6.6,0,12.2,3.3,14,8.1h-28.7C252.1,42,257.9,38.8,265.1,38.8z"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Interactive Search Form -->
+    <div class="search-form-wrapper">
+      <div class="search-bar" id="searchBarContainer">
+        <div class="search-icon-wrapper">
+          <i data-lucide="search" class="icon-search"></i>
+        </div>
+        
+        <input type="text" class="search-input" id="searchInput" aria-label="Search" autocomplete="off" autofocus>
+        
+        <div class="search-controls">
+          <!-- Voice Search Trigger -->
+          <button class="control-btn" id="voiceSearchBtn" title="Search by voice" aria-label="Search by voice">
+            <svg class="mic-icon" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M12,14c1.66,0,3-1.34,3-3V5c0-1.66-1.34-3-3-3S9,3.34,9,5v6C9,12.66,10.34,14,12,14z" fill="#4285F4"></path>
+              <path d="M17,11c0,2.76-2.24,5-5,5s-5-2.24-5-5H5c0,3.53,2.61,6.43,6,6.92V21h2v-3.08c3.39-0.49,6-3.39,6-6.92H17z" fill="#EA4335"></path>
+            </svg>
+          </button>
+          
+          <!-- Image Search (Lens) Trigger -->
+          <button class="control-btn" id="lensSearchBtn" title="Search by image" aria-label="Search by image">
+            <svg class="lens-icon" viewBox="0 0 24 24" width="24" height="24">
+              <path d="M2.5,5A2.5,2.5,0,0,1,5,2.5H8.33V4.17H5A.83.83,0,0,0,4.17,5V8.33H2.5Z" fill="#4285F4"></path>
+              <path d="M19,2.5a2.5,2.5,0,0,1,2.5,2.5V8.33H19.83V5A.83.83,0,0,0,19,4.17H15.67V2.5Z" fill="#EA4335"></path>
+              <path d="M21.5,19A2.5,2.5,0,0,1,19,21.5H15.67V19.83H19a.83.83,0,0,0,.83-.83V15.67H21.5Z" fill="#FBBC05"></path>
+              <path d="M5,21.5A2.5,2.5,0,0,1,2.5,19V15.67H4.17V19A.83.83,0,0,0,5,19.83H8.33V21.5Z" fill="#34A853"></path>
+              <circle cx="12" cy="12" r="3.75" fill="#4285F4"></circle>
+              <circle cx="17.25" cy="6.75" r="1" fill="#34A853"></circle>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Search Suggestions Box (Hidden by default) -->
+        <div class="search-suggestions" id="searchSuggestions">
+          <ul class="suggestions-list" id="suggestionsList">
+            <!-- Simulated History -->
+            <li class="suggestion-item history-item">
+              <i data-lucide="clock" class="suggestion-icon"></i>
+              <span class="suggestion-text">css grid vs flexbox cheatsheet</span>
+              <button class="delete-suggestion" title="Remove query"><i data-lucide="x"></i></button>
+            </li>
+            <li class="suggestion-item history-item">
+              <i data-lucide="clock" class="suggestion-icon"></i>
+              <span class="suggestion-text">how to build a beautiful website using vanilla css</span>
+              <button class="delete-suggestion" title="Remove query"><i data-lucide="x"></i></button>
+            </li>
+            <!-- Google Suggestions -->
+            <li class="suggestion-item">
+              <i data-lucide="search" class="suggestion-icon"></i>
+              <span class="suggestion-text">google developer tools chrome extensions</span>
+            </li>
+            <li class="suggestion-item">
+              <i data-lucide="search" class="suggestion-icon"></i>
+              <span class="suggestion-text">google glassmorphism design code blocks</span>
+            </li>
+            <li class="suggestion-item">
+              <i data-lucide="search" class="suggestion-icon"></i>
+              <span class="suggestion-text">how to clone a webpage flawlessly</span>
+            </li>
+            <li class="suggestion-item">
+              <i data-lucide="search" class="suggestion-icon"></i>
+              <span class="suggestion-text">responsive css styles best practices 2026</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="button-row">
+        <button class="search-btn" id="searchSubmitBtn">Google Search</button>
+        <button class="search-btn" id="luckyBtn">I'm Feeling Lucky</button>
+      </div>
+    </div>
+
+    <!-- Offered In Languages -->
+    <div class="offered-in">
+      Google offered in: <a href="#">Deutsch</a> <a href="#">Français</a> <a href="#">Español</a> <a href="#">हिन्दी</a>
+    </div>
+
+  </main>
+
+  <!-- Google Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <span class="country-name">Germany</span>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links-left">
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Advertising</a>
+        <a href="#" class="footer-link">Business</a>
+        <a href="#" class="footer-link">How Search works</a>
+      </div>
+      <div class="footer-links-right">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link" id="settingsBtn">Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Selector Floating Hub -->
+  <div class="theme-hub">
+    <button class="theme-hub-trigger" id="themeHubTrigger" title="Select Theme" aria-label="Select Theme">
+      <i data-lucide="palette"></i>
+    </button>
+    <div class="theme-options" id="themeOptions">
+      <button class="theme-opt-btn active" data-theme-val="light">
+        <span class="color-dot light-dot"></span> Classic Light
+      </button>
+      <button class="theme-opt-btn" data-theme-val="dark">
+        <span class="color-dot dark-dot"></span> Google Dark
+      </button>
+      <button class="theme-opt-btn" data-theme-val="glass">
+        <span class="color-dot glass-dot"></span> Cyber Glass
+      </button>
+    </div>
+  </div>
+
+  <!-- Simulated Voice Search Overlay -->
+  <div class="modal-overlay" id="voiceSearchModal">
+    <div class="modal-card voice-card">
+      <button class="close-modal-btn" id="closeVoiceModal"><i data-lucide="x"></i></button>
+      <div class="voice-status">Listening...</div>
+      <div class="voice-wave-container">
+        <span class="wave-bar bar-1"></span>
+        <span class="wave-bar bar-2"></span>
+        <span class="wave-bar bar-3"></span>
+        <span class="wave-bar bar-4"></span>
+        <span class="wave-bar bar-5"></span>
+      </div>
+      <p class="voice-caption">Try saying: "Beautiful CSS designs"</p>
+    </div>
+  </div>
+
+  <!-- Simulated Lens Modal -->
+  <div class="modal-overlay" id="lensModal">
+    <div class="modal-card lens-card">
+      <div class="lens-header">
+        <h3>Search any image with Google Lens</h3>
+        <button class="close-modal-btn" id="closeLensModal"><i data-lucide="x"></i></button>
+      </div>
+      <div class="lens-dropzone" id="lensDropzone">
+        <i data-lucide="image-plus" class="dropzone-icon"></i>
+        <p>Drag an image here or <span class="upload-link">upload a file</span></p>
+        <input type="file" id="lensFileInput" style="display: none;" accept="image/*">
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascript -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1072 @@
+/* ==========================================================================
+   Google Homepage Clone Design System
+   ========================================================================== */
+
+:root {
+  /* Common variables */
+  --font-body: 'Google Sans', 'Inter', Arial, sans-serif;
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+  --font-sans: 'Google Sans', 'Inter', Arial, sans-serif;
+  
+  /* Transition timings */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Theme definitions
+   -------------------------------------------------------------------------- */
+
+/* 1. Classic Light Mode */
+html[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --nav-hover-bg: rgba(60, 64, 67, 0.08);
+  --search-border: #eceff1;
+  --search-bg: #ffffff;
+  --search-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  --search-focus-shadow: 0 4px 12px rgba(23, 23, 23, 0.09);
+  --btn-bg: #f8f9fa;
+  --btn-text: #3c4043;
+  --btn-border: rgba(0, 0, 0, 0.05);
+  --btn-hover-bg: #f1f3f4;
+  --btn-hover-border: #dadce0;
+  --btn-hover-text: #202124;
+  --footer-bg: #f2f2f2;
+  --footer-border: #e4e4e4;
+  --footer-text: #70757a;
+  
+  --popover-bg: #ffffff;
+  --popover-border: #ccc;
+  --popover-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  --app-item-hover: rgba(66, 133, 244, 0.08);
+  
+  --glass-glows-opacity: 0;
+  --logo-color-override: initial;
+}
+
+/* 2. Google Dark Mode */
+html[data-theme="dark"] {
+  --bg-primary: #202124;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --nav-hover-bg: rgba(232, 234, 237, 0.08);
+  --search-border: #5f6368;
+  --search-bg: #202124;
+  --search-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  --search-focus-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --btn-bg: #303134;
+  --btn-text: #e8eaed;
+  --btn-border: transparent;
+  --btn-hover-bg: #3c4043;
+  --btn-hover-border: transparent;
+  --btn-hover-text: #e8eaed;
+  --footer-bg: #171717;
+  --footer-border: #212121;
+  --footer-text: #9aa0a6;
+  
+  --popover-bg: #303134;
+  --popover-border: #3c4043;
+  --popover-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  --app-item-hover: rgba(232, 234, 237, 0.08);
+  
+  --glass-glows-opacity: 0;
+  --logo-color-override: initial;
+}
+
+/* 3. Cyber Glass Mode (Glassmorphic) */
+html[data-theme="glass"] {
+  --bg-primary: #090a15;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --nav-hover-bg: rgba(255, 255, 255, 0.1);
+  --search-border: rgba(255, 255, 255, 0.15);
+  --search-bg: rgba(15, 23, 42, 0.45);
+  --search-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --search-focus-shadow: 0 0 25px rgba(66, 133, 244, 0.3);
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-text: #e2e8f0;
+  --btn-border: rgba(255, 255, 255, 0.08);
+  --btn-hover-bg: rgba(255, 255, 255, 0.12);
+  --btn-hover-border: rgba(99, 102, 241, 0.5);
+  --btn-hover-text: #ffffff;
+  --footer-bg: rgba(15, 23, 42, 0.6);
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-text: #64748b;
+  
+  --popover-bg: rgba(15, 23, 42, 0.85);
+  --popover-border: rgba(255, 255, 255, 0.1);
+  --popover-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --app-item-hover: rgba(99, 102, 241, 0.15);
+  
+  --glass-glows-opacity: 1;
+  --logo-color-override: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Base resets and Layout
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Glassmorphism Glowing Backgrounds
+   -------------------------------------------------------------------------- */
+.glass-bg-glows {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -10;
+  opacity: var(--glass-glows-opacity);
+  transition: opacity var(--transition-normal);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.22;
+  transition: all 1s ease-in-out;
+}
+
+.orb-purple {
+  background: #7c3aed;
+  width: 50vw;
+  height: 50vw;
+  top: -10vw;
+  left: -10vw;
+  animation: floatOrb1 20s infinite alternate ease-in-out;
+}
+
+.orb-blue {
+  background: #3b82f6;
+  width: 45vw;
+  height: 45vw;
+  bottom: -10vw;
+  right: -5vw;
+  animation: floatOrb2 25s infinite alternate-reverse ease-in-out;
+}
+
+.orb-cyan {
+  background: #06b6d4;
+  width: 30vw;
+  height: 30vw;
+  top: 20vh;
+  right: 25vw;
+  animation: floatOrb1 18s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(80px, 50px) scale(1.15); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-100px, -60px) scale(0.9); }
+}
+
+/* --------------------------------------------------------------------------
+   Navbar Styles
+   -------------------------------------------------------------------------- */
+.navbar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 24px;
+  font-size: 13px;
+  z-index: 100;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-link {
+  color: var(--text-primary);
+  opacity: 0.85;
+  padding: 6px 4px;
+  border-bottom: 1px solid transparent;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+/* Header buttons */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.apps-icon {
+  fill: currentColor;
+}
+
+.profile-btn {
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.profile-btn:hover {
+  transform: scale(1.05);
+}
+
+.avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--btn-border);
+}
+
+/* --------------------------------------------------------------------------
+   Modals & Popovers
+   -------------------------------------------------------------------------- */
+
+/* 1. Google Apps Drawer Popover */
+.apps-drawer {
+  position: absolute;
+  top: 60px;
+  right: 24px;
+  width: 320px;
+  max-height: 450px;
+  background-color: var(--popover-bg);
+  border: 1px solid var(--popover-border);
+  box-shadow: var(--popover-shadow);
+  border-radius: 28px;
+  padding: 24px;
+  display: none;
+  z-index: 500;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: fadeInPopover 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apps-drawer.active {
+  display: block;
+}
+
+@keyframes fadeInPopover {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px 8px;
+  text-align: center;
+}
+
+.app-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 6px;
+  border-radius: 16px;
+  color: var(--text-primary);
+  font-size: 12px;
+  transition: background-color var(--transition-fast);
+}
+
+.app-item:hover {
+  background-color: var(--app-item-hover);
+}
+
+.app-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* App Mock Icons */
+.search-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2d/Google-Search-Logo.svg'); }
+.maps-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Google_Maps_icon_%282020%29.svg'); }
+.youtube-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.svg'); }
+.play-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg'); }
+.news-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/da/Google_News_icon.svg'); }
+.gmail-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg'); }
+.meet-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Meet_icon_%282020%29.svg'); }
+.drive-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg'); }
+.calendar-app { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg'); }
+
+/* 2. Profile Menu Popover */
+.profile-menu {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  width: 340px;
+  background-color: var(--popover-bg);
+  border: 1px solid var(--popover-border);
+  box-shadow: var(--popover-shadow);
+  border-radius: 28px;
+  padding: 24px;
+  display: none;
+  z-index: 500;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: fadeInPopover 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-menu.active {
+  display: block;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 2px solid rgba(66, 133, 244, 0.4);
+}
+
+.user-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.user-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-btn {
+  background: none;
+  border: 1px solid var(--popover-border);
+  border-radius: 100px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  margin: 8px 0;
+  transition: background-color var(--transition-fast);
+}
+
+.manage-btn:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.profile-actions hr {
+  border: none;
+  border-top: 1px solid var(--popover-border);
+  margin: 12px 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: background-color var(--transition-fast);
+}
+
+.menu-item:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.menu-item i {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Search Container Elements
+   -------------------------------------------------------------------------- */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  flex-grow: 1;
+}
+
+/* Google Logo Styling */
+.google-logo-wrapper {
+  margin-bottom: 28px;
+}
+
+.google-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Logo Color Themes overrides */
+.logo-blue { fill: var(--logo-color-override, var(--google-blue)); }
+.logo-red { fill: var(--logo-color-override, var(--google-red)); }
+.logo-yellow { fill: var(--logo-color-override, var(--google-yellow)); }
+.logo-green { fill: var(--logo-color-override, var(--google-green)); }
+
+html[data-theme="glass"] .google-logo-wrapper {
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.4));
+}
+
+html[data-theme="glass"] #logo-letters path {
+  fill: none;
+  stroke: url(#glassGradient);
+  stroke-width: 2.2px;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 0;
+  animation: drawLogo 5s ease-in-out infinite alternate;
+}
+
+/* Custom Gradient injection via SVG fallback */
+@keyframes drawLogo {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Search Bar Input
+   -------------------------------------------------------------------------- */
+.search-form-wrapper {
+  width: 100%;
+  max-width: 584px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  min-height: 46px;
+  background-color: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 24px;
+  position: relative;
+  align-items: center;
+  padding: 0 14px;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.search-bar:hover {
+  border-color: transparent;
+  box-shadow: var(--search-shadow);
+}
+
+.search-bar.focus {
+  border-color: transparent;
+  box-shadow: var(--search-shadow);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+html[data-theme="glass"] .search-bar {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html[data-theme="glass"] .search-bar:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.15);
+}
+
+html[data-theme="glass"] .search-bar.focus {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
+}
+
+/* Search input elements */
+.search-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 13px;
+  color: var(--text-secondary);
+}
+
+.icon-search {
+  width: 20px;
+  height: 20px;
+}
+
+.search-input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--text-primary);
+  padding: 6px 0;
+  min-width: 0;
+}
+
+.search-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color var(--transition-fast), transform 0.2s;
+}
+
+.control-btn:hover {
+  background-color: var(--nav-hover-bg);
+  transform: scale(1.08);
+}
+
+.mic-icon, .lens-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Autocomplete Suggestions Dropdown
+   -------------------------------------------------------------------------- */
+.search-suggestions {
+  position: absolute;
+  top: 44px;
+  left: -1px;
+  right: -1px;
+  background-color: var(--search-bg);
+  border: 1px solid transparent;
+  box-shadow: var(--search-shadow);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  padding-bottom: 12px;
+  display: none;
+  z-index: 10;
+  overflow: hidden;
+  border-top: 1px solid var(--search-border);
+}
+
+.search-bar.focus .search-suggestions {
+  display: block;
+}
+
+.suggestions-list {
+  list-style: none;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.suggestion-item:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.suggestion-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-secondary);
+  margin-right: 14px;
+}
+
+.suggestion-text {
+  flex-grow: 1;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item .suggestion-text {
+  color: #a07cfc;
+}
+html[data-theme="light"] .history-item .suggestion-text {
+  color: #6d28d9;
+}
+
+.delete-suggestion {
+  color: var(--text-secondary);
+  opacity: 0.6;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.delete-suggestion:hover {
+  opacity: 1;
+  background-color: var(--nav-hover-bg);
+}
+
+.delete-suggestion i {
+  width: 14px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Action Buttons
+   -------------------------------------------------------------------------- */
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 29px;
+  justify-content: center;
+}
+
+.search-btn {
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 16px;
+  line-height: 27px;
+  height: 36px;
+  text-align: center;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+  background-color: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  color: var(--btn-hover-text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+html[data-theme="glass"] .search-btn {
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html[data-theme="glass"] .search-btn:hover {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Offered In Languages
+   -------------------------------------------------------------------------- */
+.offered-in {
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.offered-in a {
+  color: var(--google-blue);
+  margin-left: 6px;
+  transition: text-decoration 0.2s;
+}
+
+.offered-in a:hover {
+  text-decoration: underline;
+}
+
+html[data-theme="glass"] .offered-in a {
+  color: #38bdf8;
+}
+
+/* --------------------------------------------------------------------------
+   Footer Styles
+   -------------------------------------------------------------------------- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-border);
+  font-size: 14px;
+  width: 100%;
+  transition: background-color var(--transition-normal);
+}
+
+.footer-top {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--footer-border);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+
+.footer-links-left, .footer-links-right {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  padding: 15px;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+html[data-theme="glass"] .footer {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* --------------------------------------------------------------------------
+   Theme Selector Pill Floating Hub
+   -------------------------------------------------------------------------- */
+.theme-hub {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-hub-trigger {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--popover-bg);
+  border: 1px solid var(--popover-border);
+  box-shadow: var(--popover-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color var(--transition-normal);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.theme-hub-trigger:hover {
+  transform: rotate(30deg) scale(1.08);
+}
+
+.theme-hub-trigger i {
+  width: 22px;
+  height: 22px;
+}
+
+.theme-options {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background-color: var(--popover-bg);
+  border: 1px solid var(--popover-border);
+  box-shadow: var(--popover-shadow);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 160px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.theme-hub.active .theme-options {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.theme-opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast);
+  text-align: left;
+}
+
+.theme-opt-btn:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.theme-opt-btn.active {
+  font-weight: 500;
+  background-color: var(--nav-hover-bg);
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.light-dot { background-color: #f1f3f4; border: 1px solid #dadce0; }
+.dark-dot { background-color: #202124; border: 1px solid #5f6368; }
+.glass-dot { background: linear-gradient(135deg, #a78bfa, #22d3ee); }
+
+/* --------------------------------------------------------------------------
+   Modal overlays
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--popover-bg);
+  border: 1px solid var(--popover-border);
+  box-shadow: var(--popover-shadow);
+  border-radius: 28px;
+  padding: 32px;
+  width: 90%;
+  max-width: 500px;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.modal-overlay.active .modal-card {
+  transform: scale(1);
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.close-modal-btn:hover {
+  background-color: var(--nav-hover-bg);
+  color: var(--text-primary);
+}
+
+.close-modal-btn i {
+  width: 20px;
+  height: 20px;
+}
+
+/* 1. Voice Search details */
+.voice-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.voice-status {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.voice-wave-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  gap: 6px;
+}
+
+.wave-bar {
+  width: 4px;
+  height: 10px;
+  background-color: var(--google-blue);
+  border-radius: 4px;
+  animation: voiceWave 1.2s infinite ease-in-out;
+}
+
+.bar-1 { background-color: var(--google-blue); animation-delay: 0.1s; }
+.bar-2 { background-color: var(--google-red); animation-delay: 0.3s; }
+.bar-3 { background-color: var(--google-yellow); animation-delay: 0.5s; }
+.bar-4 { background-color: var(--google-green); animation-delay: 0.2s; }
+.bar-5 { background-color: var(--google-blue); animation-delay: 0.4s; }
+
+@keyframes voiceWave {
+  0%, 100% { height: 10px; }
+  50% { height: 60px; }
+}
+
+.voice-caption {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 2. Lens Modal details */
+.lens-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.lens-header h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lens-dropzone {
+  border: 2px dashed var(--popover-border);
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lens-dropzone:hover, .lens-dropzone.dragover {
+  border-color: var(--google-blue);
+  background-color: var(--nav-hover-bg);
+}
+
+.dropzone-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-secondary);
+}
+
+.upload-link {
+  color: var(--google-blue);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout Modifiers
+   -------------------------------------------------------------------------- */
+@media (max-width: 584px) {
+  .navbar {
+    padding: 6px 12px;
+  }
+  .nav-left {
+    display: none;
+  }
+  .search-container {
+    padding: 60px 16px;
+  }
+  .button-row {
+    flex-direction: row;
+    width: 100%;
+  }
+  .search-btn {
+    flex-grow: 1;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .footer-links-left, .footer-links-right {
+    justify-content: center;
+    width: 100%;
+  }
+  .footer-link {
+    padding: 10px;
+  }
+}
